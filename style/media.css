@@ -1,0 +1,126 @@
+:root {
+    --maingreencolor: #4caf4f;
+
+}
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--headercolor);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--maingreencolor);
+    box-shadow: 0 0 10px #ddd inset;
+}
+@media (max-width: 768px){
+    .Illustra {
+        display: none;
+    }
+    .clients .footer,
+    .design > .container,
+    .sponser > .container,
+    .help > .container ,
+    footer > .container,
+    .contact {
+        flex-direction: column;
+    }
+    .sponser > .container img {
+        margin: 0px;
+    }
+    .caring > .container > .box{
+        padding: 20px 20px 0px 20px
+    }
+    .demo .container {
+        max-width: 390px;
+    }
+    .demo > .container > h1 {
+        font-size: 1.7em;
+    }
+    .clients > .container > .footer img,
+    .design > .container img {
+        width: calc(442px / 1.5);
+        height: calc(433px / 1.5);
+    }
+    .help > .container > .left-article > h2 {
+        max-width: 100%;
+    }
+    .help > .container > .left-article {
+        min-height: 152px;
+    }
+    .caring > .container > p {
+        min-width: 70%;
+    }
+    .body .content-text p {
+        width: 100%;
+    }
+}
+@media (min-width: 768px){
+    .container {
+        width: 750px;
+    }
+    .Illustra {
+        display: none;
+    }
+}
+
+
+@media (min-width: 992px){
+    .container {
+        width: 970px;
+    }
+
+}
+
+
+@media (min-width: 1200px){
+    .container {
+        width: 1170px;
+    }
+    .Illustra {
+        display: block;
+    }
+}
+
+
+@media (max-width: 1000px){
+    .fa-bars{
+        visibility: visible;
+    }
+    header > nav > ul > li:not(:first-of-type):hover {
+        font-size: 30px;
+        transition: .5s;
+    }
+    header > nav > ul > li:first-of-type {
+        display: block;
+    }
+    header > nav > ul {
+        flex-direction: column;
+        width: 90%;
+        border: 10px solid var(--maingreencolor);
+        height: calc(100vh - 70px);
+        line-height: 3;
+        font-size: 20px;
+        text-align: center;
+        position: fixed;
+        left: -100%;
+        bottom: 1%;
+        transition: .5s;
+    }
+    #btn:checked ~ ul{
+        background-color: white;
+        /* margin-top: 65%; */
+        left: 0%;
+        /* top: 0%; */
+        transition: .5s;
+    }
+
+    header > nav > img {
+        display: none;
+    }
+    .fa-circle-xmark {
+        font-size: 30px;
+    }
+    .fa-circle-xmark:hover {
+        color: red
+    }
+}

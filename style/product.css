@@ -1,0 +1,100 @@
+:root {
+    --headercolor: #f5f7fa;
+    --maingreencolor: #4caf4f;
+    --h1-d-grey: #4D4D4D;
+    --p-natural-grey: #717171;
+    --box-shadow-color: #ABBED1;
+    --h2-font-size: 30px;
+    --margin-top-btwn-sections: 40px;
+    --footer-color: #263238;
+}
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--headercolor);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--maingreencolor);
+    box-shadow: 0 0 10px #ddd inset;
+}
+.hide-profile {
+    visibility: hidden;
+}
+.scoll-up {
+    background-color: var(--maingreencolor);
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    display: none;
+}
+::selection{
+    background-color: var(--maingreencolor);
+    color: white;
+}
+.container {
+    /* max-width: 1250px;
+    min-width: 350px; */
+    margin: 0px auto;
+    padding: 32px;
+    font-family: sans-serif;
+    
+}
+/* Start nav Header */
+.parent {
+    background-color: var(--headercolor);
+}
+/* start product */
+.hide {
+    display: none;
+}
+.botm-color {
+    border-bottom: 3px solid var(--maingreencolor);
+}
+.product .container .video h1 {
+    text-align: center;
+}
+.product .container .video div:first-of-type {
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+    font-size: 20px;
+}
+.product .container .video div:first-of-type p:hover {
+    color: var(--maingreencolor);
+}
+.product .container .video div:not(:first-of-type) {
+    text-align: center;
+}
+.product .container .video video {
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+}
+
+/* end product */
+
+/* start client */
+.client {
+    background-color: var(--headercolor);
+}
+.client .container {
+    text-align: center;
+}
+.client .container .speaker {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    gap: 10px;
+}
+.client .container .speaker .para p {
+    width: 80%;
+    margin: 20px auto ;
+}
+/* end client */
