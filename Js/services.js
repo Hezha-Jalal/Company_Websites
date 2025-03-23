@@ -16,113 +16,81 @@ scrollBtn.onclick = function(){
         behavior: "smooth"
     })
 }
-function createProfile(){
-    let crtDiv = document.createElement("div");
-    let crtDivIcon = document.createElement("div");
-    let crtDivP = document.createElement("div");
-    let crtH1 = document.createElement("h1");
-    let crtImg = document.createElement("img");
-    let crtI = document.createElement("i");
-    let crtIpen = document.createElement("i");
-    crtI.className = "fa-regular fa-user"
-    crtIpen.className = "fa-solid fa-pen";
-    let crtPgmail = document.createElement("p");
-    let crtBtnLogOut = document.createElement("button");
-    let crtBtnDelete = document.createElement("button");
-    crtH1.innerText = `Hello ${localStorage.getItem(`user`).split(",")[0]}`;
-    crtPgmail.innerText = localStorage.getItem(`user`).split(",")[1];
+function createProfile() {
+    // Create main profile container
+    const crtDiv = document.createElement("div");
+    crtDiv.classList.add("hide-profile", "main-div");
+
+    // Create and style profile icon container
+    const crtDivIcon = document.createElement("div");
+    crtDivIcon.style.cssText = "padding: 20px 5px;";
+
+    // Create and style profile details container
+    const crtDivP = document.createElement("div");
+    crtDivP.style.cssText = "padding: 20px 5px;";
+
+    // Create and populate profile header
+    const crtH1 = document.createElement("h1");
+    const user = localStorage.getItem("user")?.split(",");
+    if (user) {
+        crtH1.innerText = `Hello ${user[0]}`;
+    }
+    crtH1.classList.add("h1-name");
+
+    // Create profile icons
+    const crtI = document.createElement("i");
+    crtI.className = "fa-regular fa-user icon-profile";
+
+    const crtIpen = document.createElement("i");
+    crtIpen.className = "fa-solid fa-pen pen-icon";
+
+    // Create and populate email paragraph
+    const crtPgmail = document.createElement("p");
+    crtPgmail.innerText = user ? user[1] : "";
+    crtPgmail.classList.add("p-gmail");
+
+    // Create buttons
+    const crtBtnLogOut = document.createElement("button");
     crtBtnLogOut.innerText = "Log Out";
+    crtBtnLogOut.classList.add("btn-log-out");
+
+    const crtBtnDelete = document.createElement("button");
     crtBtnDelete.innerText = "Delete the Account";
-    crtDiv.append(crtH1);
-    crtDivIcon.append(crtI);
-    crtDivIcon.append(crtIpen);
-    crtDiv.append(crtDivIcon);
-    crtDivP.append(crtPgmail);
-    crtDivP.append(crtBtnLogOut);
-    crtDivP.append(crtBtnDelete);
-    crtDiv.append(crtDivP);
+    crtBtnDelete.classList.add("btn-delete");
+
+    // Append elements to their respective containers
+    crtDivIcon.append(crtI, crtIpen);
+    crtDivP.append(crtPgmail, crtBtnLogOut, crtBtnDelete);
+    crtDiv.append(crtH1, crtDivIcon, crtDivP);
+
+    // Add the profile container to the document
     document.body.prepend(crtDiv);
-    crtDiv.classList.add("hide-profile");
-    crtDiv.style.cssText = `
-    width: 200px;
-    background-color: var(--headercolor);
-    position: absolute;
-    z-index: 10;
-    right: 50px;
-    top: 90px;
-    font-family: sans-serif;
-    `;
-    crtH1.style.cssText = `
-    background-color: var(--maingreencolor);
-    margin: 0px;
-    color: white;
-    padding: 10px 5px 20px;
-    text-align: center;
-    font-size: 17px;
-    `;
-    crtDivIcon.style.cssText = `
-    padding: 20px 5px;
-    `;
-    crtDivP.style.cssText = `
-    padding: 20px 5px;
-    `;
-    crtI.style.cssText = `
-    font-size: 25px;
-    color: white;
-    background-color: var(--maingreencolor);
-    border-radius: 50%;
-    padding: 10px 11px;
-    margin-left: 70px;
-    `;
-    crtIpen.style.cssText = `
-    font-size: 15px;
-    margin-left: 40px;
-    cursor: pointer;
-    `;
-    crtPgmail.style.cssText = `
-    text-align: center;
-    margin: 0px 0px 20px 0px;
-    `;
-    crtBtnLogOut.style.cssText = `
-    width: 100%;
-    padding: 5px 0px;
-    margin-bottom: 5px;
-    border: 2px solid var(--maingreencolor);
-    border-radius: 5px;
-    background-color: var(--headercolor);
-    color: black;
-    cursor: pointer;
-    `;
-    crtBtnDelete.style.cssText = `
-    width: 100%;
-    padding: 5px 0px;
-    margin-bottom: 5px;
-    border-color: transparent;
-    border-radius: 5px;
-    background-color: red;
-    color: white;
-    cursor: pointer;
-    `;
-    changeSpan.onclick = function(){
+
+    // Toggle profile visibility
+    changeSpan.onclick = () => {
         crtDiv.classList.toggle("hide-profile");
-    }
-    crtBtnLogOut.onclick = function(){
+    };
+
+    // Log out functionality
+    crtBtnLogOut.onclick = () => {
         crtDiv.remove();
-        changeSpan.innerText = `Login`;
-        changeSpan.onclick = function(){
+        changeSpan.innerText = "Login";
+        changeSpan.onclick = () => {
             window.location.href = "../Html/login.html";
-        }
-    }
-    crtBtnDelete.onclick = function(){
+        };
+    };
+
+    // Delete account functionality
+    crtBtnDelete.onclick = () => {
         crtDiv.remove();
-        window.localStorage.removeItem(`user`);
-        changeSpan.innerText = `Login`;
-        document.getElementById("hiden-span").style.display = 'inline-block';
-        document.getElementById("hiden-btn").style.display = 'block';
-        changeSpan.onclick = function(){
+        localStorage.removeItem("user");
+        changeSpan.innerText = "Login";
+        document.getElementById("hiden-span").style.display = "inline-block";
+        document.getElementById("hiden-btn").style.display = "block";
+        changeSpan.onclick = () => {
             window.location.href = "../Html/login.html";
-        }
-    }
+        };
+    };
 }
 if(localStorage.getItem(`user`) != null){
     changeSpan.innerText = "";
