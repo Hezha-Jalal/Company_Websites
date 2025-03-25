@@ -26,9 +26,6 @@ header {
     display: flex;
     justify-content: space-around;
 }
-.header-ul li:not(:last-of-type) {
-    padding-top: 6px;
-}
 .header-a {
     text-decoration: none;
     color: black;
@@ -68,15 +65,7 @@ header {
     text-decoration: none;
     color: white;
 }
-#lang {
-    background-color: transparent;
-    border-color: transparent;
-    padding: 3px 7px;
-    margin-top: -5px;
-}
-#lang:focus{
-    outline: none;;
-}
+
 /* start profile style */
 
 .main-div {

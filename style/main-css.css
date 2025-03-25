@@ -83,6 +83,15 @@
     cursor: pointer;
     color: white;
 }
+#lang {
+    background-color: transparent;
+    border-color: transparent;
+    padding: 0px 7px;
+    
+}
+#lang:focus{
+    outline: none;
+}
 /* End nav Header */
 /* Start Animation section */
 header > div:last-of-type{

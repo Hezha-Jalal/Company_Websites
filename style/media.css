@@ -86,16 +86,15 @@
     .fa-bars{
         visibility: visible;
     }
-    header > nav > ul > li:not(:first-of-type):hover {
+    /* header > nav > ul > li:not(:first-of-type):hover {
         font-size: 30px;
         transition: .5s;
-    }
+    } */
     header > nav > ul > li:first-of-type {
         display: block;
     }
     header > nav > ul {
         flex-direction: column;
-        width: 90%;
         border: 10px solid var(--maingreencolor);
         height: calc(100vh - 70px);
         line-height: 3;
@@ -103,14 +102,13 @@
         text-align: center;
         position: fixed;
         left: -100%;
-        bottom: 1%;
+        bottom: 7%;
         transition: .5s;
     }
     #btn:checked ~ ul{
+        width: 100%;
         background-color: white;
-        /* margin-top: 65%; */
         left: 0%;
-        /* top: 0%; */
         transition: .5s;
     }
 
