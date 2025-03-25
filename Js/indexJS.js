@@ -4,9 +4,14 @@ let btnService = document.getElementById("go-to-service");
 let btnProduct = document.getElementById("go-to-product");
 let lang = document.querySelector("#lang");
 let changeLanguage = document.querySelectorAll(".chang-lang");
+let langAtrr = document.querySelectorAll("#lang option");
+
 
 function changeLang(lang){
 
+    if(lang === "kur"){
+        langAtrr[1].setAttribute("selected", "");
+    }
         return new Promise((resolve, reject) => {
             let requ = new XMLHttpRequest();
             requ.onload = function(){
@@ -32,14 +37,33 @@ function changeLang(lang){
                     
                     });
                     changeLanguage[3].style.lineHeight = "1.7";
+                    langAtrr[1].style.fontFamily = "Noto Kufi Arabic, sans-serif";
+                }else{
+                    changeLanguage[3].style.lineHeight = "1.15";
+
                 };
 
             };
         });
     
 };
+if(window.localStorage.getItem("lang") == "kur" && changeLanguage[0].innerHTML == "Home"){
+    changeLang("kur");
+}else if(window.localStorage.getItem("lang") == "eng" && changeLanguage[0].innerHTML != "Home"){
+    changeLang("eng");
+}
 lang.onchange = function(){
-    changeLang(lang.value);
+    console.log(lang.value);
+    
+    window.localStorage.setItem("lang", lang.value);
+    let langValue = window.localStorage.getItem("lang");
+    changeLang(langValue);
+    
+}
+if (lang.value === "kur") {
+    lang.style.fontFamily = "Noto Kufi Arabic, sans-serif";
+} else {
+    lang.style.fontFamily = "inherit"; // Reset to default or another font
 }
 window.onscroll = function(){
     if(window.scrollY >= 550){
