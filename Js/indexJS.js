@@ -56,7 +56,7 @@ if(window.localStorage.getItem("lang") == "kur" && changeLanguage[0].innerHTML =
     lang.style.fontFamily = "inherit"; // Reset to default or another font
 }
 lang.onchange = function(){
-    
+    console.log(lang.value);
     window.localStorage.setItem("lang", lang.value);
     let langValue = window.localStorage.getItem("lang");
     changeLang(langValue);
@@ -137,7 +137,7 @@ function createProfile() {
         crtDiv.remove();
         changeSpan.innerText = "Login";
         changeSpan.onclick = () => {
-            window.location.href = "../Html/login.html";
+            window.location.href = "Html/login.html";
         };
     };
 
