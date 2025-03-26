@@ -1,20 +1,6 @@
 :root {
     --maingreencolor: #4caf4f;
 }
-::-webkit-scrollbar {
-    width: 15px;
-}
-::-webkit-scrollbar-track {
-    background-color: var(--headercolor);
-}
-::-webkit-scrollbar-thumb {
-    background-color: var(--maingreencolor);
-    box-shadow: 0 0 10px #ddd inset;
-}
-::selection {
-    background-color: var(--maingreencolor);
-    color: white;
-}
 .container {
     width: 50%;
     margin: 0px auto;

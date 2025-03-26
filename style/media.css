@@ -86,10 +86,16 @@
     .fa-bars{
         visibility: visible;
     }
-    /* header > nav > ul > li:not(:first-of-type):hover {
+    header > nav > ul > li:nth-of-type(n+2):nth-of-type(-n+4) {
         font-size: 30px;
-        transition: .5s;
-    } */
+    }
+    header > nav > ul > li:nth-of-type(n+2):nth-of-type(-n+4):hover {
+        background-color: var(--maingreencolor);
+        color: white
+    }
+    header > nav > ul > li:nth-of-type(n+2):nth-of-type(-n+4):hover a {
+        color: white
+    }
     header > nav > ul > li:first-of-type {
         display: block;
     }
@@ -101,6 +107,7 @@
         font-size: 20px;
         text-align: center;
         position: fixed;
+        z-index: 1;
         left: -100%;
         bottom: 7%;
         transition: .5s;

@@ -2,51 +2,33 @@ let scrollBtn = document.querySelector(".scoll-up");
 let changeSpan = document.getElementById("change-tag");
 let btnService = document.getElementById("go-to-service");
 let btnProduct = document.getElementById("go-to-product");
-let onlineShop = document.querySelector(".online");
-let tourism = document.querySelector(".tour");
-let education = document.querySelector(".edu");
-let all = document.querySelector(".all");
-let divOnlineShop = document.querySelector(".online-shop");
-let divEducation = document.querySelector(".education");
-let divTourism = document.querySelector(".tourism");
+let allProducts = document.querySelectorAll(".clickable");
+let allVideos = document.querySelectorAll(".all");
+let divOnlineShop = document.querySelector(".on-shop");
+let divEducation = document.querySelector(".edu");
+let divTourism = document.querySelector(".tour");
 let changeLanguage = document.querySelectorAll(".chang-lang");
 
-        all.onclick = function(){
-            divEducation.classList.remove("hide");
-            divTourism.classList.remove("hide");
-            divOnlineShop.classList.remove("hide");
-            education.classList.remove("botm-color");
-            tourism.classList.remove("botm-color");
-            onlineShop.classList.remove("botm-color");
-            all.classList.add("botm-color");
-            
-        }
-        onlineShop.onclick = function(){
-            divEducation.classList.add("hide");
-            divTourism.classList.add("hide");
-            divOnlineShop.classList.remove("hide");
-            education.classList.remove("botm-color");
-            tourism.classList.remove("botm-color");
-            onlineShop.classList.add("botm-color");
-            
-        }
-        tourism.onclick = function(){
-            divEducation.classList.add("hide");
-            divTourism.classList.remove("hide");
-            divOnlineShop.classList.add("hide");
-            education.classList.remove("botm-color");
-            tourism.classList.add("botm-color");
-            onlineShop.classList.remove("botm-color");
-        }
-        education.onclick = function(){
-            divEducation.classList.remove("hide");
-            divTourism.classList.add("hide");
-            divOnlineShop.classList.add("hide");
-            education.classList.add("botm-color");
-            tourism.classList.remove("botm-color");
-            onlineShop.classList.remove("botm-color");
+    allProducts.forEach((ele) => {
+        ele.addEventListener("click",addActiveClass);
+        ele.addEventListener("click",showSpecificProduct);
+    });
 
-        }
+    function addActiveClass(){
+        allProducts.forEach((ele) => {
+            ele.classList.remove("active-style");
+        });
+        this.classList.add("active-style");
+    }
+    function showSpecificProduct(){
+        allVideos.forEach((ele) => {
+            ele.style.display = "none";
+        });
+        document.querySelectorAll(this.dataset.item).forEach((el)=>{
+            el.style.display = "block";
+        });
+        
+    }
     
         function createProfile() {
             // Create main profile container
@@ -158,13 +140,21 @@ function changeLang(lang){
             if(lang === "kur"){
                 changeLanguage.forEach((element) => {
                     element.style.fontFamily = "Noto Kufi Arabic, sans-serif";
-                
                 });
-                // changeLanguage[3].style.lineHeight = "1.7";
+                
             };
 
         };
     });
 
 };
-changeLang(window.localStorage.getItem("lang"));
+if(window.localStorage.getItem("lang") == "kur"){
+    if(changeLanguage[0].innerHTML == "Home"){
+        changeLang("kur");
+    }
+}else if(window.localStorage.getItem("lang") == "eng"){
+    if(changeLanguage[0].innerHTML != "Home"){
+        changeLang("eng");
+        lang.style.fontFamily = "inherit"; // Reset to default or another font
+    }
+}

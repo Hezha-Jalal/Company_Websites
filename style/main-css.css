@@ -42,13 +42,7 @@
     cursor: pointer;
     display: none;
 }
-::selection{
-    background-color: var(--maingreencolor);
-    color: white;
-}
 .container {
-    /* max-width: 1250px;
-    min-width: 350px; */
     margin: 0px auto;
     padding: 32px;
     font-family: sans-serif;
@@ -87,7 +81,7 @@
     background-color: transparent;
     border-color: transparent;
     padding: 0px 7px;
-    
+    font-family: "Noto Kufi Arabic", sans-serif;
 }
 #lang:focus{
     outline: none;

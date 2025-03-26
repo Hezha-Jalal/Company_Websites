@@ -138,4 +138,9 @@ function changeLang(lang){
 
 };
 
-changeLang(window.localStorage.getItem("lang"));
+if(window.localStorage.getItem("lang") == "kur" && changeLanguage[0].innerHTML == "Home"){
+    changeLang("kur");
+}else if(window.localStorage.getItem("lang") == "eng" && changeLanguage[0].innerHTML != "Home"){
+    changeLang("eng");
+    lang.style.fontFamily = "inherit"; // Reset to default or another font
+}

@@ -36,9 +36,10 @@ function changeLang(lang){
                         element.style.fontFamily = "Noto Kufi Arabic, sans-serif";
                     
                     });
-                    // rtl[0].style.flexDirection = "row-reverse";
                     changeLanguage[3].style.lineHeight = "1.7";
-                    langAtrr[1].style.fontFamily = "Noto Kufi Arabic, sans-serif";
+                    changeLanguage[3].style.fontSize = "45px";
+                    // rtl.classList.toggle("row-reverse");
+
                 }else{
                     changeLanguage[3].style.lineHeight = "1.15";
 
@@ -50,7 +51,6 @@ function changeLang(lang){
 };
 if(window.localStorage.getItem("lang") == "kur" && changeLanguage[0].innerHTML == "Home"){
     changeLang("kur");
-    lang.style.fontFamily = "Noto Kufi Arabic, sans-serif";
 }else if(window.localStorage.getItem("lang") == "eng" && changeLanguage[0].innerHTML != "Home"){
     changeLang("eng");
     lang.style.fontFamily = "inherit"; // Reset to default or another font
