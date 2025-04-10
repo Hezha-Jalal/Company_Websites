@@ -38,6 +38,7 @@ function changeLang(lang){
                     });
                     changeLanguage[3].style.lineHeight = "1.7";
                     changeLanguage[3].style.fontSize = "45px";
+                    changeLanguage[12].style.width = "100%";
                     // rtl.classList.toggle("row-reverse");
 
                 }else{

@@ -22,6 +22,9 @@ header {
     background-color: var(--headercolor);
     padding: 22px auto;
 }
+.w-100 {
+    width: 100%;
+}
 .fa-bars {
     font-size: 19px;
     visibility: hidden;
