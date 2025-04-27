@@ -2,67 +2,7 @@ let scrollBtn = document.querySelector(".scoll-up");
 let changeSpan = document.getElementById("change-tag");
 let btnService = document.getElementById("go-to-service");
 let btnProduct = document.getElementById("go-to-product");
-let lang = document.querySelector("#lang");
-let changeLanguage = document.querySelectorAll(".chang-lang");
-let langAtrr = document.querySelectorAll("#lang option");
-let rtl = document.querySelectorAll("rtl");
 
-function changeLang(lang){
-
-    if(lang === "kur"){
-        langAtrr[1].setAttribute("selected", "");
-    }
-        return new Promise((resolve, reject) => {
-            let requ = new XMLHttpRequest();
-            requ.onload = function(){
-                if(requ.readyState == 4 && requ.status == 200){
-    
-                    let data = JSON.parse(requ.responseText);
-                    resolve(data);
-            }else{
-                reject(Error("The result is wrong"));
-            };
-        };
-        requ.open("GET", `../multilanguage.json`, true);
-        requ.send();
-        }).then((data) => {
-            console.log(data[lang]["Lessons and insights form 8 years"]);
-            console.log(changeLanguage);
-            for(let i = 0; i < changeLanguage.length; i++){
-
-                changeLanguage[i].innerHTML = data[lang][changeLanguage[i].innerHTML.trim().toLowerCase()];
-                if(lang === "kur"){
-                    changeLanguage.forEach((element) => {
-                        element.style.fontFamily = "Noto Kufi Arabic, sans-serif";
-                    
-                    });
-                    changeLanguage[3].style.lineHeight = "1.7";
-                    changeLanguage[3].style.fontSize = "45px";
-                    changeLanguage[12].style.width = "100%";
-                    // rtl.classList.toggle("row-reverse");
-
-                }else{
-                    changeLanguage[3].style.lineHeight = "1.15";
-
-                };
-
-            };
-        });
-    
-};
-if(window.localStorage.getItem("lang") == "kur" && changeLanguage[0].innerHTML == "Home"){
-    changeLang("kur");
-}else if(window.localStorage.getItem("lang") == "eng" && changeLanguage[0].innerHTML != "Home"){
-    changeLang("eng");
-    lang.style.fontFamily = "inherit"; // Reset to default or another font
-}
-lang.onchange = function(){
-    console.log(lang.value);
-    window.localStorage.setItem("lang", lang.value);
-    let langValue = window.localStorage.getItem("lang");
-    changeLang(langValue);
-    
-}
 
 window.onscroll = function(){
     if(window.scrollY >= 550){

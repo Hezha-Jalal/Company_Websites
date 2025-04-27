@@ -1,7 +1,6 @@
 let changeSpan = document.getElementById("change-tag");
 let btnService = document.getElementById("go-to-service");
 let btnProduct = document.getElementById("go-to-product");
-let changeLanguage = document.querySelectorAll(".chang-lang");
 
         window.onscroll = function(){
     if(window.scrollY >= 50){
@@ -105,42 +104,4 @@ if(localStorage.getItem(`user`) != null){
     document.getElementById("hiden-span").style.display = 'none';
     document.getElementById("hiden-btn").style.display = 'none';
     
-}
-function changeLang(lang){
-
-    return new Promise((resolve, reject) => {
-        let requ = new XMLHttpRequest();
-        requ.onload = function(){
-            if(requ.readyState == 4 && requ.status == 200){
-
-                let data = JSON.parse(requ.responseText);
-                resolve(data);
-        }else{
-            reject(Error("The result is wrong"));
-        };
-    };
-    requ.open("GET", `../multilanguage.json`, true);
-    requ.send();
-    }).then((data) => {
-        for(let i = 0; i < changeLanguage.length; i++){
-
-            changeLanguage[i].innerHTML = data[lang][changeLanguage[i].innerHTML.trim().toLowerCase()];
-            if(lang === "kur"){
-                changeLanguage.forEach((element) => {
-                    element.style.fontFamily = "Noto Kufi Arabic, sans-serif";
-                
-                });
-
-            };
-
-        };
-    });
-
-};
-
-if(window.localStorage.getItem("lang") == "kur" && changeLanguage[0].innerHTML == "Home"){
-    changeLang("kur");
-}else if(window.localStorage.getItem("lang") == "eng" && changeLanguage[0].innerHTML != "Home"){
-    changeLang("eng");
-    lang.style.fontFamily = "inherit"; // Reset to default or another font
 }
